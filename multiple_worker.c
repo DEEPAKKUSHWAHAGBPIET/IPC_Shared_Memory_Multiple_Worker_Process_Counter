@@ -75,6 +75,10 @@ int main(){
           total_increment += count;
      }
      printf("all workers finished..\n");
-     printf("final sum of counter values : %d\n", total_increment);
+     printf("final sum of counter values : %d\n (expected total counter value : %d)\n", total_increment, WORKERS*OPERATATIONS);
+
+     shmdt(shm_ptr);
+     shmctl(shmid, IPC_RMID, NULL);
+     
      return 0;
 }
